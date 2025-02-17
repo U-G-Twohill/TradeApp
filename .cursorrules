@@ -1,0 +1,46 @@
+{
+    "rules": {
+      "context_initialization": {
+        "description": "Establish the shared project context before each interaction.",
+        "steps": [
+          "ALWAYS read `.notes/project_overview.md` for overall goals and architecture.",
+          "ALWAYS review `.notes/task_list.md` to understand current priorities and tasks."
+        ]
+      },
+      "operational_protocol": {
+        "description": "Guidelines for processing tasks and making code changes.",
+        "before_action": [
+          "Break down tasks using the MECE framework.",
+          "Review related code and documentation before implementing changes."
+        ],
+        "code_changes": [
+          "Preserve existing functionality.",
+          "Maintain type safety and robust error handling.",
+          "Document all new code and updates inline."
+        ]
+      },
+      "safety_requirements": [
+        "NEVER compromise on type safety or error handling.",
+        "ALWAYS validate new features against the project goals in `.notes/project_overview.md`."
+      ],
+      "priorities": [
+        {
+          "source": ".notes/task_list.md",
+          "weight": 1.0
+        }
+      ],
+      "modes": {
+        "base": {
+          "description": "For routine tasks, minor updates, and code maintenance."
+        },
+        "enhanced": {
+          "description": "For complex feature development, architectural changes, and problem-solving."
+        }
+      },
+      "project_directives": {
+        "name": "Tradespeople Task Manager",
+        "ai_first": true
+      }
+    }
+  }
+  
