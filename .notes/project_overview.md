@@ -26,3 +26,5 @@ Build a personal project management application designed specifically for trades
 3. **Task Management:** Tasks are updated in real-time as work progresses.
 4. **Collaboration:** As the project evolves, the user invites subcontractors and peers to help manage specific tasks.
 5. **Feedback:** Upon completion, users rate each other's performance, fostering a transparent, merit-based work environment.
+
+

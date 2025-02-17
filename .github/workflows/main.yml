@@ -1,0 +1,74 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    name: Validate Repository Structure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check Required Directories
+        run: |
+          for dir in ".notes" "backend" "mobile" "web" "shared"; do
+            if [ ! -d "$dir" ]; then
+              mkdir -p "$dir"
+              echo "Created missing directory: $dir"
+            fi
+          done
+
+  lint:
+    name: Lint Check
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      - name: Install Dependencies
+        run: |
+          npm init -y
+          npm install -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin prettier
+      - name: Run Linting
+        run: |
+          echo "Linting checks will be expanded as we add code"
+          exit 0
+
+  test:
+    name: Run Tests
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      - name: Placeholder Test Run
+        run: |
+          echo "Test suite will be implemented as we add code"
+          exit 0
+
+  build:
+    name: Build Check
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      - name: Placeholder Build
+        run: |
+          echo "Build process will be implemented as we add code"
+          exit 0 

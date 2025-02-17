@@ -16,7 +16,8 @@
         "code_changes": [
           "Preserve existing functionality.",
           "Maintain type safety and robust error handling.",
-          "Document all new code and updates inline."
+          "Document all new code and updates inline.",
+          "Update `.notes/task_list.md` accordingliy to keep up with task progression and dynamically update priority of tasks (if needed)"
         ]
       },
       "safety_requirements": [
@@ -38,7 +39,7 @@
         }
       },
       "project_directives": {
-        "name": "Tradespeople Task Manager",
+        "name": "TradeApp",
         "ai_first": true
       }
     }
