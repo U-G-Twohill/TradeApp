@@ -9,6 +9,8 @@ import { routes } from './routes';
 import { authRoutes } from './routes/auth';
 import { initializeDatabase } from './config/database';
 import { userRoutes } from './routes/users';
+import { jobRoutes } from './routes/jobs';
+import { taskRoutes } from './routes/tasks';
 
 // Load environment variables
 config();
@@ -39,6 +41,8 @@ app.get('/', (req: Request, res: Response) => {
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/jobs', jobRoutes);
+app.use('/api', taskRoutes);
 app.use('/api', routes);
 
 // Error handling

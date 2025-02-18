@@ -7,6 +7,7 @@ import {
   UpdateDateColumn
 } from 'typeorm';
 import { User } from './User';
+import { Job } from './Job';
 
 @Entity('tasks')
 export class Task {
@@ -31,6 +32,9 @@ export class Task {
 
   @Column({ type: 'decimal', precision: 10, scale: 2, nullable: true })
   estimatedHours!: number;
+
+  @ManyToOne(() => Job, job => job.tasks)
+  job!: Job;
 
   @ManyToOne(() => User, { eager: true })
   assignedTo!: User;

@@ -79,11 +79,11 @@ export class AuthService {
     }
   }
 
-  static async login(email: string, password: string): Promise<{ user: Partial<User>; token: string }> {
+  static async login(credentials: { email: string; password: string }): Promise<{ user: Partial<User>; token: string }> {
     try {
       // Find user with password
       const user = await userRepository.findOne({
-        where: { email },
+        where: { email: credentials.email },
         select: ['id', 'email', 'password', 'firstName', 'lastName', 'role']
       });
 
@@ -92,7 +92,7 @@ export class AuthService {
       }
 
       // Verify password
-      const isPasswordValid = await this.comparePasswords(password, user.password);
+      const isPasswordValid = await this.comparePasswords(credentials.password, user.password);
       if (!isPasswordValid) {
         throw new Error('Invalid password');
       }
