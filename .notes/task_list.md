@@ -101,8 +101,18 @@
     - [x] Implement validation middleware
     - [x] Update routes with validation
     - [x] Test validation for all endpoints
-  - [ ] Add API documentation (Swagger/OpenAPI)
-  - [ ] Add rate limiting
+  - [x] Add API documentation (Swagger/OpenAPI)
+    - [x] Configure Swagger
+    - [x] Document authentication endpoints
+    - [x] Document job endpoints
+    - [x] Document task endpoints
+    - [x] Test documentation in Swagger UI
+  - [x] Add rate limiting
+    - [x] Configure rate limiters
+    - [x] Implement auth rate limiting
+    - [x] Implement job creation rate limiting
+    - [x] Implement task creation rate limiting
+    - [x] Test rate limiting functionality
   - [ ] Implement refresh tokens
   - [ ] Add real-time updates (WebSocket)
 

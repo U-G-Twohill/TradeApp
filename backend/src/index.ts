@@ -11,6 +11,9 @@ import { initializeDatabase } from './config/database';
 import { userRoutes } from './routes/users';
 import { jobRoutes } from './routes/jobs';
 import { taskRoutes } from './routes/tasks';
+import swaggerUi from 'swagger-ui-express';
+import { specs } from './config/swagger';
+import { apiLimiter } from './config/rateLimit';
 
 // Load environment variables
 config();
@@ -44,6 +47,12 @@ app.use('/api/users', userRoutes);
 app.use('/api/jobs', jobRoutes);
 app.use('/api', taskRoutes);
 app.use('/api', routes);
+
+// Apply rate limiting to all routes
+app.use('/api/', apiLimiter);
+
+// Swagger documentation route
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 // Error handling
 app.use(errorHandler);

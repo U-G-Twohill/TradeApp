@@ -9,12 +9,70 @@ import {
 } from '../validation/schemas';
 import { logger } from '../utils/logger';
 import { JobParticipantRole } from '../entities/Job';
+import { jobCreationLimiter } from '../config/rateLimit';
 
 const router = Router();
 
-// Create job
+/**
+ * @swagger
+ * /jobs:
+ *   post:
+ *     summary: Create a new job
+ *     tags: [Jobs]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - title
+ *               - description
+ *               - startDate
+ *               - dueDate
+ *               - clientId
+ *             properties:
+ *               title:
+ *                 type: string
+ *                 minLength: 3
+ *                 maxLength: 200
+ *               description:
+ *                 type: string
+ *                 minLength: 10
+ *               startDate:
+ *                 type: string
+ *                 format: date
+ *               dueDate:
+ *                 type: string
+ *                 format: date
+ *               estimatedHours:
+ *                 type: number
+ *               budget:
+ *                 type: number
+ *               location:
+ *                 type: string
+ *               clientId:
+ *                 type: string
+ *                 format: uuid
+ *     responses:
+ *       201:
+ *         description: Job created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Job'
+ *       400:
+ *         description: Invalid input data
+ *       401:
+ *         description: Unauthorized
+ *       500:
+ *         description: Server error
+ */
 router.post('/', 
   authenticateToken,
+  jobCreationLimiter,
   validate(jobCreationSchema),
   async (req: AuthRequest, res) => {
     try {
@@ -30,7 +88,28 @@ router.post('/',
     }
 });
 
-// Get all jobs for user
+/**
+ * @swagger
+ * /jobs:
+ *   get:
+ *     summary: Get all jobs for the current user
+ *     tags: [Jobs]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: List of jobs
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Job'
+ *       401:
+ *         description: Unauthorized
+ *       500:
+ *         description: Server error
+ */
 router.get('/', authenticateToken, async (req: AuthRequest, res) => {
   try {
     const jobs = await JobService.getJobs(req.user!.id);
@@ -41,7 +120,33 @@ router.get('/', authenticateToken, async (req: AuthRequest, res) => {
   }
 });
 
-// Get job by ID
+/**
+ * @swagger
+ * /jobs/{id}:
+ *   get:
+ *     summary: Get a specific job by ID
+ *     tags: [Jobs]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     responses:
+ *       200:
+ *         description: Job details
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Job'
+ *       401:
+ *         description: Unauthorized
+ *       404:
+ *         description: Job not found
+ */
 router.get('/:id', authenticateToken, async (req: AuthRequest, res) => {
   try {
     const job = await JobService.getJobById(req.params.id, req.user!.id);
@@ -56,7 +161,66 @@ router.get('/:id', authenticateToken, async (req: AuthRequest, res) => {
   }
 });
 
-// Update job
+/**
+ * @swagger
+ * /jobs/{id}:
+ *   put:
+ *     summary: Update a job
+ *     tags: [Jobs]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *                 minLength: 3
+ *                 maxLength: 200
+ *               description:
+ *                 type: string
+ *                 minLength: 10
+ *               status:
+ *                 type: string
+ *                 enum: [pending, in_progress, completed, cancelled]
+ *               startDate:
+ *                 type: string
+ *                 format: date
+ *               dueDate:
+ *                 type: string
+ *                 format: date
+ *               estimatedHours:
+ *                 type: number
+ *               budget:
+ *                 type: number
+ *               location:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Job updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Job'
+ *       400:
+ *         description: Invalid input data
+ *       401:
+ *         description: Unauthorized
+ *       403:
+ *         description: Not authorized to update this job
+ *       404:
+ *         description: Job not found
+ */
 router.put('/:id', 
   authenticateToken,
   validate(jobUpdateSchema),
@@ -74,7 +238,31 @@ router.put('/:id',
     }
 });
 
-// Delete job
+/**
+ * @swagger
+ * /jobs/{id}:
+ *   delete:
+ *     summary: Delete a job
+ *     tags: [Jobs]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     responses:
+ *       204:
+ *         description: Job deleted successfully
+ *       401:
+ *         description: Unauthorized
+ *       403:
+ *         description: Not authorized to delete this job
+ *       404:
+ *         description: Job not found
+ */
 router.delete('/:id', authenticateToken, async (req: AuthRequest, res) => {
   try {
     await JobService.deleteJob(req.params.id, req.user!.id);
@@ -89,7 +277,47 @@ router.delete('/:id', authenticateToken, async (req: AuthRequest, res) => {
   }
 });
 
-// Add participant to job
+/**
+ * @swagger
+ * /jobs/{id}/participants:
+ *   post:
+ *     summary: Add a participant to a job
+ *     tags: [Jobs]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - userId
+ *               - role
+ *             properties:
+ *               userId:
+ *                 type: string
+ *                 format: uuid
+ *               role:
+ *                 type: string
+ *                 enum: [manager, coordinator, worker, client]
+ *     responses:
+ *       201:
+ *         description: Participant added successfully
+ *       401:
+ *         description: Unauthorized
+ *       403:
+ *         description: Not authorized to add participants
+ *       404:
+ *         description: Job or user not found
+ */
 router.post('/:id/participants', 
   authenticateToken,
   validate(jobParticipantSchema),
@@ -112,7 +340,37 @@ router.post('/:id/participants',
     }
 });
 
-// Remove participant from job
+/**
+ * @swagger
+ * /jobs/{id}/participants/{userId}:
+ *   delete:
+ *     summary: Remove a participant from a job
+ *     tags: [Jobs]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *       - in: path
+ *         name: userId
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     responses:
+ *       204:
+ *         description: Participant removed successfully
+ *       401:
+ *         description: Unauthorized
+ *       403:
+ *         description: Not authorized to remove participants
+ *       404:
+ *         description: Job or participant not found
+ */
 router.delete('/:id/participants/:userId', authenticateToken, async (req: AuthRequest, res) => {
   try {
     await JobService.removeParticipant(

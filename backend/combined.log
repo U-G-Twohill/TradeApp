@@ -125,3 +125,82 @@
 {"0":{"code":"too_small","exact":false,"inclusive":true,"message":"String must contain at least 3 character(s)","minimum":3,"path":["title"],"type":"string"},"1":{"code":"too_small","exact":false,"inclusive":true,"message":"String must contain at least 10 character(s)","minimum":10,"path":["description"],"type":"string"},"2":{"code":"too_small","exact":false,"inclusive":false,"message":"Number must be greater than 0","minimum":0,"path":["estimatedHours"],"type":"number"},"3":{"code":"too_small","exact":false,"inclusive":false,"message":"Number must be greater than 0","minimum":0,"path":["budget"],"type":"number"},"4":{"code":"invalid_string","message":"Invalid uuid","path":["clientId"],"validation":"uuid"},"5":{"code":"custom","message":"Invalid date format","path":["startDate"]},"6":{"code":"custom","message":"Due date must be after start date","path":["dueDate"]},"level":"warn","message":"Validation error:","timestamp":"2025-02-18T08:21:21.381Z"}
 {"0":{"code":"too_small","exact":false,"inclusive":true,"message":"String must contain at least 3 character(s)","minimum":3,"path":["title"],"type":"string"},"1":{"code":"too_small","exact":false,"inclusive":true,"message":"String must contain at least 10 character(s)","minimum":10,"path":["description"],"type":"string"},"2":{"code":"too_small","exact":false,"inclusive":false,"message":"Number must be greater than 0","minimum":0,"path":["estimatedHours"],"type":"number"},"3":{"code":"invalid_string","message":"Invalid uuid","path":["assignedToId"],"validation":"uuid"},"4":{"code":"custom","message":"Invalid date format","path":["dueDate"]},"level":"warn","message":"Validation error:","timestamp":"2025-02-18T08:22:27.507Z"}
 {"0":{"code":"invalid_enum_value","message":"Invalid enum value. Expected 'pending' | 'in_progress' | 'completed' | 'cancelled', received 'invalid_status'","options":["pending","in_progress","completed","cancelled"],"path":["status"],"received":"invalid_status"},"1":{"code":"too_small","exact":false,"inclusive":false,"message":"Number must be greater than 0","minimum":0,"path":["estimatedHours"],"type":"number"},"level":"warn","message":"Validation error:","timestamp":"2025-02-18T08:23:23.490Z"}
+{"level":"info","message":"Database connection established","timestamp":"2025-02-18T08:28:36.253Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-02-18T08:28:36.257Z"}
+{"level":"info","message":"Available endpoints:","timestamp":"2025-02-18T08:28:36.257Z"}
+{"level":"info","message":"- POST /api/auth/register","timestamp":"2025-02-18T08:28:36.257Z"}
+{"level":"info","message":"- POST /api/auth/login","timestamp":"2025-02-18T08:28:36.257Z"}
+{"level":"info","message":"- GET /api/health","timestamp":"2025-02-18T08:28:36.258Z"}
+{"level":"info","message":"Database connection established","timestamp":"2025-02-18T08:30:39.293Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-02-18T08:30:39.297Z"}
+{"level":"info","message":"Available endpoints:","timestamp":"2025-02-18T08:30:39.298Z"}
+{"level":"info","message":"- POST /api/auth/register","timestamp":"2025-02-18T08:30:39.298Z"}
+{"level":"info","message":"- POST /api/auth/login","timestamp":"2025-02-18T08:30:39.298Z"}
+{"level":"info","message":"- GET /api/health","timestamp":"2025-02-18T08:30:39.298Z"}
+{"level":"info","message":"Database connection established","timestamp":"2025-02-18T08:33:36.247Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-02-18T08:33:36.251Z"}
+{"level":"info","message":"Available endpoints:","timestamp":"2025-02-18T08:33:36.251Z"}
+{"level":"info","message":"- POST /api/auth/register","timestamp":"2025-02-18T08:33:36.252Z"}
+{"level":"info","message":"- POST /api/auth/login","timestamp":"2025-02-18T08:33:36.252Z"}
+{"level":"info","message":"- GET /api/health","timestamp":"2025-02-18T08:33:36.252Z"}
+{"level":"info","message":"Database connection established","timestamp":"2025-02-18T08:35:49.719Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-02-18T08:35:49.722Z"}
+{"level":"info","message":"Available endpoints:","timestamp":"2025-02-18T08:35:49.722Z"}
+{"level":"info","message":"- POST /api/auth/register","timestamp":"2025-02-18T08:35:49.723Z"}
+{"level":"info","message":"- POST /api/auth/login","timestamp":"2025-02-18T08:35:49.723Z"}
+{"level":"info","message":"- GET /api/health","timestamp":"2025-02-18T08:35:49.723Z"}
+{"level":"info","message":"Database connection established","timestamp":"2025-02-18T08:36:01.416Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-02-18T08:36:01.419Z"}
+{"level":"info","message":"Available endpoints:","timestamp":"2025-02-18T08:36:01.419Z"}
+{"level":"info","message":"- POST /api/auth/register","timestamp":"2025-02-18T08:36:01.420Z"}
+{"level":"info","message":"- POST /api/auth/login","timestamp":"2025-02-18T08:36:01.420Z"}
+{"level":"info","message":"- GET /api/health","timestamp":"2025-02-18T08:36:01.420Z"}
+{"level":"info","message":"Database connection established","timestamp":"2025-02-18T08:38:56.563Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-02-18T08:38:56.566Z"}
+{"level":"info","message":"Available endpoints:","timestamp":"2025-02-18T08:38:56.567Z"}
+{"level":"info","message":"- POST /api/auth/register","timestamp":"2025-02-18T08:38:56.567Z"}
+{"level":"info","message":"- POST /api/auth/login","timestamp":"2025-02-18T08:38:56.567Z"}
+{"level":"info","message":"- GET /api/health","timestamp":"2025-02-18T08:38:56.568Z"}
+{"level":"info","message":"Database connection established","timestamp":"2025-02-18T08:40:13.662Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-02-18T08:40:13.666Z"}
+{"level":"info","message":"Available endpoints:","timestamp":"2025-02-18T08:40:13.666Z"}
+{"level":"info","message":"- POST /api/auth/register","timestamp":"2025-02-18T08:40:13.667Z"}
+{"level":"info","message":"- POST /api/auth/login","timestamp":"2025-02-18T08:40:13.667Z"}
+{"level":"info","message":"- GET /api/health","timestamp":"2025-02-18T08:40:13.667Z"}
+{"level":"info","message":"Database connection established","timestamp":"2025-02-18T08:43:23.569Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-02-18T08:43:23.572Z"}
+{"level":"info","message":"Available endpoints:","timestamp":"2025-02-18T08:43:23.573Z"}
+{"level":"info","message":"- POST /api/auth/register","timestamp":"2025-02-18T08:43:23.573Z"}
+{"level":"info","message":"- POST /api/auth/login","timestamp":"2025-02-18T08:43:23.573Z"}
+{"level":"info","message":"- GET /api/health","timestamp":"2025-02-18T08:43:23.573Z"}
+{"level":"info","message":"Database connection established","timestamp":"2025-02-18T08:43:37.285Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-02-18T08:43:37.288Z"}
+{"level":"info","message":"Available endpoints:","timestamp":"2025-02-18T08:43:37.289Z"}
+{"level":"info","message":"- POST /api/auth/register","timestamp":"2025-02-18T08:43:37.289Z"}
+{"level":"info","message":"- POST /api/auth/login","timestamp":"2025-02-18T08:43:37.289Z"}
+{"level":"info","message":"- GET /api/health","timestamp":"2025-02-18T08:43:37.289Z"}
+{"level":"info","message":"Database connection established","timestamp":"2025-02-18T08:43:44.764Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-02-18T08:43:44.768Z"}
+{"level":"info","message":"Available endpoints:","timestamp":"2025-02-18T08:43:44.769Z"}
+{"level":"info","message":"- POST /api/auth/register","timestamp":"2025-02-18T08:43:44.769Z"}
+{"level":"info","message":"- POST /api/auth/login","timestamp":"2025-02-18T08:43:44.770Z"}
+{"level":"info","message":"- GET /api/health","timestamp":"2025-02-18T08:43:44.770Z"}
+{"level":"info","message":"Database connection established","timestamp":"2025-02-18T08:43:50.481Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2025-02-18T08:43:50.485Z"}
+{"level":"info","message":"Available endpoints:","timestamp":"2025-02-18T08:43:50.485Z"}
+{"level":"info","message":"- POST /api/auth/register","timestamp":"2025-02-18T08:43:50.485Z"}
+{"level":"info","message":"- POST /api/auth/login","timestamp":"2025-02-18T08:43:50.486Z"}
+{"level":"info","message":"- GET /api/health","timestamp":"2025-02-18T08:43:50.486Z"}
+{"level":"error","message":"Error in login service: Invalid password","stack":"Error: Invalid password\n    at Function.login (D:\\Repos\\TradeApp\\backend\\src\\services\\authService.ts:97:15)\n    at D:\\Repos\\TradeApp\\backend\\src\\routes\\auth.ts:125:20","timestamp":"2025-02-18T08:45:46.905Z"}
+{"level":"error","message":"Login error: Invalid password","stack":"Error: Invalid password\n    at Function.login (D:\\Repos\\TradeApp\\backend\\src\\services\\authService.ts:97:15)\n    at D:\\Repos\\TradeApp\\backend\\src\\routes\\auth.ts:125:20","timestamp":"2025-02-18T08:45:46.905Z"}
+{"level":"error","message":"Error in login service: Invalid password","stack":"Error: Invalid password\n    at Function.login (D:\\Repos\\TradeApp\\backend\\src\\services\\authService.ts:97:15)\n    at D:\\Repos\\TradeApp\\backend\\src\\routes\\auth.ts:125:20","timestamp":"2025-02-18T08:45:46.980Z"}
+{"level":"error","message":"Login error: Invalid password","stack":"Error: Invalid password\n    at Function.login (D:\\Repos\\TradeApp\\backend\\src\\services\\authService.ts:97:15)\n    at D:\\Repos\\TradeApp\\backend\\src\\routes\\auth.ts:125:20","timestamp":"2025-02-18T08:45:46.980Z"}
+{"level":"error","message":"Error in login service: Invalid password","stack":"Error: Invalid password\n    at Function.login (D:\\Repos\\TradeApp\\backend\\src\\services\\authService.ts:97:15)\n    at D:\\Repos\\TradeApp\\backend\\src\\routes\\auth.ts:125:20","timestamp":"2025-02-18T08:45:47.048Z"}
+{"level":"error","message":"Login error: Invalid password","stack":"Error: Invalid password\n    at Function.login (D:\\Repos\\TradeApp\\backend\\src\\services\\authService.ts:97:15)\n    at D:\\Repos\\TradeApp\\backend\\src\\routes\\auth.ts:125:20","timestamp":"2025-02-18T08:45:47.049Z"}
+{"level":"error","message":"Error in login service: Invalid password","stack":"Error: Invalid password\n    at Function.login (D:\\Repos\\TradeApp\\backend\\src\\services\\authService.ts:97:15)\n    at D:\\Repos\\TradeApp\\backend\\src\\routes\\auth.ts:125:20","timestamp":"2025-02-18T08:45:47.116Z"}
+{"level":"error","message":"Login error: Invalid password","stack":"Error: Invalid password\n    at Function.login (D:\\Repos\\TradeApp\\backend\\src\\services\\authService.ts:97:15)\n    at D:\\Repos\\TradeApp\\backend\\src\\routes\\auth.ts:125:20","timestamp":"2025-02-18T08:45:47.116Z"}
+{"level":"error","message":"Error in login service: Invalid password","stack":"Error: Invalid password\n    at Function.login (D:\\Repos\\TradeApp\\backend\\src\\services\\authService.ts:97:15)\n    at D:\\Repos\\TradeApp\\backend\\src\\routes\\auth.ts:125:20","timestamp":"2025-02-18T08:45:47.183Z"}
+{"level":"error","message":"Login error: Invalid password","stack":"Error: Invalid password\n    at Function.login (D:\\Repos\\TradeApp\\backend\\src\\services\\authService.ts:97:15)\n    at D:\\Repos\\TradeApp\\backend\\src\\routes\\auth.ts:125:20","timestamp":"2025-02-18T08:45:47.184Z"}
+{"level":"warn","message":"Auth rate limit exceeded for IP: ::1","timestamp":"2025-02-18T08:45:47.193Z"}
+{"level":"warn","message":"Job creation rate limit exceeded for IP: ::1","timestamp":"2025-02-18T08:47:23.059Z"}
+{"level":"warn","message":"Task creation rate limit exceeded for IP: ::1","timestamp":"2025-02-18T08:48:36.760Z"}
