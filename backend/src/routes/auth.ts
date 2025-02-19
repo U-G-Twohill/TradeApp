@@ -130,4 +130,87 @@ router.post('/login', authLimiter, validate(userLoginSchema), async (req, res) =
   }
 });
 
+/**
+ * @swagger
+ * /auth/refresh-token:
+ *   post:
+ *     summary: Refresh access token
+ *     tags: [Authentication]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - refreshToken
+ *             properties:
+ *               refreshToken:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: New access and refresh tokens
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 accessToken:
+ *                   type: string
+ *                 refreshToken:
+ *                   type: string
+ *       401:
+ *         description: Invalid refresh token
+ */
+router.post('/refresh-token', async (req, res) => {
+  try {
+    const { refreshToken } = req.body;
+    if (!refreshToken) {
+      return res.status(400).json({ message: 'Refresh token is required' });
+    }
+
+    const tokens = await AuthService.refreshToken(refreshToken);
+    res.json(tokens);
+  } catch (error) {
+    logger.error('Error refreshing token:', error);
+    res.status(401).json({ message: 'Invalid refresh token' });
+  }
+});
+
+/**
+ * @swagger
+ * /auth/logout:
+ *   post:
+ *     summary: Logout user and revoke refresh token
+ *     tags: [Authentication]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - refreshToken
+ *             properties:
+ *               refreshToken:
+ *                 type: string
+ *     responses:
+ *       204:
+ *         description: Successfully logged out
+ *       500:
+ *         description: Error during logout
+ */
+router.post('/logout', async (req, res) => {
+  try {
+    const { refreshToken } = req.body;
+    if (refreshToken) {
+      await AuthService.revokeToken(refreshToken);
+    }
+    res.status(204).send();
+  } catch (error) {
+    logger.error('Error during logout:', error);
+    res.status(500).json({ message: 'Error during logout' });
+  }
+});
+
 export { router as authRoutes }; 

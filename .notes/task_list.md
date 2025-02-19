@@ -90,10 +90,8 @@
   **Notes:** Plan integration of client-specific features for future releases.
 
 ## Completed
-
-## Next Steps
-- [ ] **API Enhancement**
-  **Status:** In Progress
+- [x] **Backend API Core Features**
+  **Status:** Completed
   **Sub-tasks:**
   - [x] Implement input validation
     - [x] Add Zod validation library
@@ -113,13 +111,27 @@
     - [x] Implement job creation rate limiting
     - [x] Implement task creation rate limiting
     - [x] Test rate limiting functionality
-  - [ ] Implement refresh tokens
-  - [ ] Add real-time updates (WebSocket)
+  - [x] Implement refresh tokens
+    - [x] Create refresh token entity
+    - [x] Update auth service
+    - [x] Add refresh token endpoints
+    - [x] Update Swagger documentation
+    - [x] Test refresh token functionality
 
+## Next Steps
 - [ ] **Frontend Development**
-  **Status:** Pending (After API Enhancement)
+  **Status:** In Progress
   **Sub-tasks:**
   - [ ] Design component library
   - [ ] Implement authentication flows
   - [ ] Create job management interfaces
   - [ ] Create task management interfaces
+
+- [ ] **Future Enhancements**
+  **Status:** Pending
+  **Sub-tasks:**
+  - [ ] Add real-time updates (WebSocket)
+    - [ ] Implement WebSocket server
+    - [ ] Define real-time event types
+    - [ ] Add connection handling
+    - [ ] Test WebSocket functionality
